@@ -7,181 +7,247 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body>
-  <header class="topbar">
-    <div class="brand">
-      <span class="dot"></span>
-      <span id="siteTitle">Happy 22nd, Meg</span>
+<body class="isLocked">
+  <!-- LOCK SCREEN -->
+  <div class="lockScreen" id="lockScreen" role="dialog" aria-modal="true" aria-label="Unlock">
+    <div class="lockCard">
+      <div class="lockTitle">To unlock, type in the password.</div>
+
+      <div class="pinDots" aria-label="PIN length">
+        <span class="pinDot"></span>
+        <span class="pinDot"></span>
+        <span class="pinDot"></span>
+        <span class="pinDot"></span>
+      </div>
+
+      <div class="pinPad" id="pinPad" aria-label="Number pad">
+        <button class="pinKey" type="button" data-digit="1">1</button>
+        <button class="pinKey" type="button" data-digit="2">2</button>
+        <button class="pinKey" type="button" data-digit="3">3</button>
+        <button class="pinKey" type="button" data-digit="4">4</button>
+        <button class="pinKey" type="button" data-digit="5">5</button>
+        <button class="pinKey" type="button" data-digit="6">6</button>
+        <button class="pinKey" type="button" data-digit="7">7</button>
+        <button class="pinKey" type="button" data-digit="8">8</button>
+        <button class="pinKey" type="button" data-digit="9">9</button>
+
+        <span class="pinSpacer" aria-hidden="true"></span>
+        <button class="pinKey" type="button" data-digit="0">0</button>
+        <button class="pinKey pinDel" type="button" id="pinDel" aria-label="Delete">⌫</button>
+      </div>
+
+      <div class="lockHint muted small">Hint: Your birthday!</div>
     </div>
-    <nav class="nav">
-      <a href="#reasons">22 Reasons</a>
-      <a href="#photos">22 Photos</a>
-      <a href="#letter">Letter</a>
-      <a href="#music">Music</a>
-    </nav>
-  </header>
+  </div>
 
-  <main class="container">
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="hero-card">
-        <p class="eyebrow" id="eyebrowText">A small website, just for you.</p>
-
-        <div class="heroTitleRow">
-          <h1 id="heroTitle">Happy 22nd Birthday, Meg 🖤</h1>
-          <span class="roseBadge" title="Roses">🌹</span>
-        </div>
-
-        <p class="heroSub" id="heroSubtitle">
-          22 reasons I love you — and 22 memories I never want to forget.
-        </p>
-
-        <div class="heroActions">
-          <a class="btn" href="#reasons">Start the 22 reasons</a>
-          <button class="btn ghost" id="copyLinkBtn" type="button">Copy link</button>
-        </div>
-
+  <div id="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="dot"></span>
+        <span id="siteTitle">Happy 22nd, Meg</span>
       </div>
-    </section>
+      <nav class="nav">
+        <a href="#reasons">22 Reasons</a>
+        <a href="#photos">22 Photos</a>
+        <a href="#letter">Letter</a>
+        <a href="#music">Music</a>
+        <a href="#game">2048</a>
+      </nav>
+    </header>
 
-    <!-- 22 REASONS -->
-    <section class="section" id="reasons">
-      <div class="sectionHead">
-        <h2>22 Reasons I Love You <span class="roseInline">🌹</span></h2>
-        <p class="muted">Flip through them one-by-one, or show all.</p>
-      </div>
+    <main class="container">
+      <!-- HERO -->
+      <section class="hero" id="home">
+        <div class="hero-card">
+          <p class="eyebrow" id="eyebrowText">A small website, just for you.</p>
 
-      <!-- Spotlight / one-by-one viewer -->
-      <div class="spotlight">
-        <div class="spotTop">
-          <div class="spotNum" id="spotNum">REASON 01</div>
+          <div class="heroTitleRow">
+            <h1 id="heroTitle">Happy 22nd Birthday, Meg 🖤</h1>
+            <span class="roseBadge" title="Roses">🌹</span>
+          </div>
 
-          <div class="spotControls">
-            <button class="iconBtn sm" id="reasonPrevBtn" aria-label="Previous reason">←</button>
-            <button class="btn sm" id="reasonAutoBtn" type="button">Auto: Off</button>
-            <button class="iconBtn sm" id="reasonNextBtn" aria-label="Next reason">→</button>
+          <p class="heroSub" id="heroSubtitle">
+            22 reasons I love you — and 22 memories I never want to forget.
+          </p>
+
+          <div class="heroActions">
+            <a class="btn" href="#reasons">Start the 22 reasons</a>
+            <button class="btn ghost" id="copyLinkBtn" type="button">Copy link</button>
           </div>
         </div>
+      </section>
 
-        <div class="spotBody" id="spotText">
-          (Reason text)
+      <!-- 22 REASONS -->
+      <section class="section" id="reasons">
+        <div class="sectionHead">
+          <h2>22 Reasons I Love You <span class="roseInline">🌹</span></h2>
+          <p class="muted">Flip through them one-by-one, or show all.</p>
         </div>
-      </div>
 
-<button class="btn sm ghost" id="toggleAllReasons" type="button">Show all 22</button>
-<div class="grid hidden" id="reasonsGrid"></div>
+        <!-- Spotlight / one-by-one viewer -->
+        <div class="spotlight">
+          <div class="spotTop">
+            <div class="spotNum" id="spotNum">REASON 01</div>
 
-    </section>
+            <div class="spotControls">
+              <button class="iconBtn sm" id="reasonPrevBtn" aria-label="Previous reason">←</button>
+              <button class="btn sm" id="reasonAutoBtn" type="button">Auto: Off</button>
+              <button class="iconBtn sm" id="reasonNextBtn" aria-label="Next reason">→</button>
+            </div>
+          </div>
 
-    <!-- PHOTOS -->
-    <section class="section" id="photos">
-      <div class="sectionHead">
-        <h2>22 Photos <span class="roseInline">🌹</span></h2>
-        <p class="muted">Arrows to flip through or auto-rotate too!</p>
-      </div>
+          <div class="spotBody" id="spotText">(Reason text)</div>
+        </div>
 
-      <div class="carouselWrap">
-        <div class="carousel" aria-label="Photo carousel">
-          <button class="iconBtn" id="prevBtn" aria-label="Previous photo">←</button>
+        <button class="btn sm ghost" id="toggleAllReasons" type="button">Show all 22</button>
+        <div class="grid hidden" id="reasonsGrid"></div>
+      </section>
 
-          <div class="frame">
-            <div class="imgStage">
-              <img id="carouselImg" alt="Photo" />
-              <div class="imgOverlay">
-                <div class="imgMeta">
-                  <div class="imgCount" id="imgCount">1 / 22</div>
-                  <div class="imgCaption" id="imgCaption">Caption goes here</div>
+      <!-- PHOTOS -->
+      <section class="section" id="photos">
+        <div class="sectionHead">
+          <h2>22 Photos <span class="roseInline">🌹</span></h2>
+          <p class="muted">Arrows to flip through or auto-rotate too!</p>
+        </div>
+
+        <div class="carouselWrap">
+          <div class="carousel" aria-label="Photo carousel">
+            <button class="iconBtn" id="prevBtn" aria-label="Previous photo">←</button>
+
+            <div class="frame">
+              <div class="imgStage">
+                <img id="carouselImg" alt="Photo" />
+                <div class="imgOverlay">
+                  <div class="imgMeta">
+                    <div class="imgCount" id="imgCount">1 / 22</div>
+                    <div class="imgCaption" id="imgCaption">Caption goes here</div>
+                  </div>
                 </div>
+              </div>
+
+              <div class="thumbRow" id="thumbRow" aria-label="Thumbnails"></div>
+
+              <div class="photoBar">
+                <button class="btn sm" id="photoAutoBtn" type="button">Auto: Off</button>
+                <label class="muted small">
+                  Speed
+                  <select id="photoSpeed">
+                    <option value="3">3s</option>
+                    <option value="5" selected>5s</option>
+                    <option value="8">8s</option>
+                  </select>
+                </label>
               </div>
             </div>
 
-            <div class="thumbRow" id="thumbRow" aria-label="Thumbnails"></div>
+            <button class="iconBtn" id="nextBtn" aria-label="Next photo">→</button>
+          </div>
+        </div>
+      </section>
 
-            <div class="photoBar">
-              <button class="btn sm" id="photoAutoBtn" type="button">Auto: Off</button>
-              <label class="muted small">
-                Speed
-                <select id="photoSpeed">
-                  <option value="3">3s</option>
-                  <option value="5" selected>5s</option>
-                  <option value="8">8s</option>
-                </select>
-              </label>
+      <!-- LETTER -->
+      <section class="section" id="letter">
+        <div class="sectionHead">
+          <h2>A Letter For You <span class="roseInline">🌹</span></h2>
+          <p class="muted">Like what I’d write in a card.</p>
+        </div>
+
+        <article class="noteCard">
+          <p id="noteText"></p>
+          <p class="sig" id="signature">— Bryce :)</p>
+        </article>
+      </section>
+
+      <!-- MUSIC -->
+      <section class="section" id="music">
+        <div class="sectionHead">
+          <h2>Music That Reminds Me of You <span class="roseInline">🌹</span></h2>
+          <p class="muted">I picked out 5 for you.</p>
+        </div>
+
+        <div class="musicCard">
+          <div class="trackTop">
+            <div>
+              <div class="trackLabel">Now playing</div>
+              <div class="trackTitle" id="trackTitle">Song Title</div>
+              <div class="trackSub" id="trackSub">Artist / note</div>
+            </div>
+
+            <div class="trackBtns">
+              <button class="iconBtn sm" id="trackPrev" aria-label="Previous song">⟲</button>
+              <button class="btn sm" id="playPause" type="button">Play</button>
+              <button class="iconBtn sm" id="trackNext" aria-label="Next song">⟳</button>
             </div>
           </div>
 
-          <button class="iconBtn" id="nextBtn" aria-label="Next photo">→</button>
-        </div>
-
-
-      </div>
-    </section>
-
-    <!-- LETTER -->
-    <section class="section" id="letter">
-      <div class="sectionHead">
-        <h2>A Letter For You <span class="roseInline">🌹</span></h2>
-        <p class="muted">Like what I’d write in a card.</p>
-      </div>
-
-      <article class="noteCard">
-        <p id="noteText"></p>
-        <p class="sig" id="signature">— Bryce :)</p>
-      </article>
-    </section>
-
-    <!-- MUSIC -->
-    <section class="section" id="music">
-      <div class="sectionHead">
-        <h2>Music That Reminds Me of You <span class="roseInline">🌹</span></h2>
-        <p class="muted">
-          I picked out 5 for you.
-        </p>
-      </div>
-
-      <div class="musicCard">
-        <div class="trackTop">
-          <div>
-            <div class="trackLabel">Now playing</div>
-            <div class="trackTitle" id="trackTitle">Song Title</div>
-            <div class="trackSub" id="trackSub">Artist / note</div>
+          <div class="progressRow">
+            <div class="time" id="timeNow">0:00</div>
+            <div class="progress" id="progress" role="slider" aria-label="Seek">
+              <div class="progressFill" id="progressFill"></div>
+            </div>
+            <div class="time" id="timeDur">0:00</div>
           </div>
 
-          <div class="trackBtns">
-            <button class="iconBtn sm" id="trackPrev" aria-label="Previous song">⟲</button>
-            <button class="btn sm" id="playPause" type="button">Play</button>
-            <button class="iconBtn sm" id="trackNext" aria-label="Next song">⟳</button>
+          <div class="musicBottom">
+            <label class="muted small">
+              Volume
+              <input id="volume" type="range" min="0" max="1" step="0.01" value="0.7" />
+            </label>
+
+            <button class="btn ghost sm" id="muteBtn" type="button">Mute</button>
+          </div>
+
+          <div class="playlist" id="playlist"></div>
+
+          <audio id="audio" preload="metadata"></audio>
+        </div>
+      </section>
+
+      <!-- 2048 -->
+      <section class="section" id="game">
+        <div class="sectionHead">
+          <h2>One more thing <span class="roseInline">🌹</span></h2>
+          <p class="muted">Press the button when you’re ready — it’s a full game of 2048.</p>
+        </div>
+
+        <div class="gameCard">
+          <div class="gTop">
+            <div class="gTitle">2048</div>
+
+            <div class="gStats">
+              <div class="gStat">
+                <div class="gLab">Score</div>
+                <div class="gVal" id="gScore">0</div>
+              </div>
+              <div class="gStat">
+                <div class="gLab">Best</div>
+                <div class="gVal" id="gBest">0</div>
+              </div>
+            </div>
+
+            <div class="gActions">
+              <button class="btn sm" id="gamePlayBtn" type="button">Play 2048</button>
+              <button class="btn ghost sm hidden" id="gameNewBtn" type="button">New</button>
+            </div>
+          </div>
+
+          <div class="gWrap hidden" id="gWrap">
+            <div class="gBoard" id="gBoard" aria-label="2048 board" role="application" tabindex="0">
+              <div class="gCells" id="gCells" aria-hidden="true"></div>
+              <div class="gTiles" id="gTiles"></div>
+            </div>
+            <div class="gMsg hidden" id="gMsg" role="status"></div>
+            <div class="gHint muted small">Use swipe (phone) or arrow keys (desktop). Music keeps playing.</div>
           </div>
         </div>
+      </section>
 
-        <div class="progressRow">
-          <div class="time" id="timeNow">0:00</div>
-          <div class="progress" id="progress" role="slider" aria-label="Seek">
-            <div class="progressFill" id="progressFill"></div>
-          </div>
-          <div class="time" id="timeDur">0:00</div>
-        </div>
+      <footer class="footer">
+        <p id="footerText">Made with love by Bryce.</p>
+      </footer>
+    </main>
 
-        <div class="musicBottom">
-          <label class="muted small">
-            Volume
-            <input id="volume" type="range" min="0" max="1" step="0.01" value="0.7" />
-          </label>
-
-          <button class="btn ghost sm" id="muteBtn" type="button">Mute</button>
-        </div>
-
-        <div class="playlist" id="playlist"></div>
-
-        <audio id="audio" preload="metadata"></audio>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <p id="footerText">Made with love by Brycen.</p>
-    </footer>
-  </main>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
+  </div>
 </body>
 </html>
