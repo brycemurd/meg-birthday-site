@@ -30,7 +30,7 @@ const CONFIG = {
     "Reason 16 — your hugs make me instantly calm",
     "Reason 17 — you are not afraid to voice your opinion",
     "Reason 18 — we aren't afraid to be weird to each other",
-    "Reason 19 — your taste in fashuion (and helping me lol)",
+    "Reason 19 — your taste in fashion (and helping me lol)",
     "Reason 20 — the joy you can find in small things",
     "Reason 21 — because I can ragebait you and you still love me",
     "Reason 22 — because you're you (I know I'm lucky)"
